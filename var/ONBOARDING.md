@@ -185,58 +185,47 @@ New-Item -ItemType Directory -Force -Path "$env:APPDATA"
 
 ### Step 3: Configure Remote Git Repository (Forgejo)
 
-**Purpose:** Set up the centralized dotfiles repository for version control and cross-device sync.
+**Status:** ✓ Complete — Forgejo repository is active and synced
 
-**Current Status:**
-- Local repository: Initialized with initial commit (f759385)
-- Remote: Configured at `http://192.168.3.174/bobby/dotfiles.git`
-- Forgejo server: Pending installation/configuration
+**Repository Details:**
+- **URL:** `http://192.168.3.174:3000/bobby/dotfiles.git`
+- **SSH (if configured):** `ssh://git@192.168.3.174:2222/bobby/dotfiles.git`
+- **Initial commits:** Pushed and synced
 
-**What You Need to Do:**
+**On macOS or Linux (pulling changes on a new device):**
 
-1. **Install Forgejo on 192.168.3.174** (if not already done)
-   - See: `~/nextcloud/Mneme/var/FORGEJO_SETUP.md` for detailed instructions
-   - Ensure Forgejo is accessible via Nginx Proxy Manager at `http://192.168.3.174/`
+```bash
+# First time: clone the repository
+git clone http://192.168.3.174:3000/bobby/dotfiles.git ~/path/to/dotfiles
 
-2. **Create the dotfiles repository on Forgejo**
-   ```bash
-   # Option A: Via API (after Forgejo is configured)
-   curl -X POST "http://192.168.3.174/api/v1/user/repos" \
-     -H "Authorization: token d31575cf702772d940f0192d3c4e73a2d451a83b" \
-     -H "Content-Type: application/json" \
-     -d '{
-       "name": "dotfiles",
-       "description": "Cross-device dotfiles and configuration management",
-       "private": false,
-       "auto_init": false
-     }'
-   
-   # Option B: Via Forgejo Web UI
-   # Navigate to http://192.168.3.174, log in, and create repo
-   ```
+# Subsequent times: update from remote
+cd ~/path/to/dotfiles
+git pull origin main
+```
 
-3. **Push the local repository to remote** (on any device)
-   ```bash
-   # Navigate to your cloned dotfiles directory
-   cd ~/nextcloud/Mneme/..  # or wherever dotfiles repo is
-   
-   # Push commits
-   git push -u origin main
-   
-   # Verify
-   git log --oneline -5
-   ```
+**On Windows (PowerShell):**
 
-4. **Verify push on other devices**
-   - After pushing from one device, pull on others:
-   ```bash
-   git pull origin main
-   ```
+```powershell
+# First time: clone
+git clone http://192.168.3.174:3000/bobby/dotfiles.git $env:USERPROFILE\path\to\dotfiles
 
-**Troubleshooting:**
-- If Forgejo is not accessible, check `FORGEJO_SETUP.md`
-- If push fails with "fatal: repository not found", create the repo first (see Option A/B above)
-- If authentication fails, verify API key in Forgejo user settings
+# Update from remote
+cd $env:USERPROFILE\path\to\dotfiles
+git pull origin main
+```
+
+**Making changes and pushing:**
+
+```bash
+# Edit files, then:
+git add .
+git commit -m "Description of changes"
+git push origin main
+```
+
+**Repository Access:**
+- **Web UI:** http://192.168.3.174:3000/bobby/dotfiles
+- **API:** http://192.168.3.174:3000/api/v1/repos/bobby/dotfiles
 
 ---
 
