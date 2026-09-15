@@ -1,7 +1,9 @@
+> *Updated 2026-09-15:* `Qwen2.5-Coder-14B` retired fleet-wide (superseded by the newer
+> 9B-class coders and by Qwen3-Coder-30B-A3B / Qwen3-Coder-Next).
+
 Code Generation & Programming
 
 - DeepSeek-Coder-V2-Lite — Code completions, quick code generation
-- Qwen2.5-Coder-14B — General code generation and debugging
 - Qwen3-Coder-Next — Latest/best coding model, advanced programming tasks
 - DeepSeek-R1-Distill-Llama-8B — Code with reasoning, complex algorithms
 - DeepSeek-R1-Distill-Qwen-14B — Advanced code reasoning, architecture design
@@ -34,7 +36,7 @@ Specialized Tasks
 
 Quick Selection Guide
 
-- Fast coding: DeepSeek-Coder-V2-Lite or Qwen2.5-Coder
+- Fast coding: DeepSeek-Coder-V2-Lite or Qwen3.5-9B
 - Best coding: Qwen3-Coder-Next
 - Complex reasoning: Phi-4-reasoning-plus or Qwen3.6-35B
 - Image tasks: Kimi-VL
