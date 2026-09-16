@@ -1,3 +1,5 @@
+> **Copied 2026-09 into mushdamma at `archive/abzu/model_suitability.md` under DEC-0028.** This copy is frozen.
+
 > *Updated 2026-09-15:* `Qwen2.5-Coder-14B` retired fleet-wide (superseded by the newer
 > 9B-class coders and by Qwen3-Coder-30B-A3B / Qwen3-Coder-Next).
 
